@@ -35,7 +35,6 @@ export async function fetchHourlyWeather(): Promise<HourlyWeather[]> {
       latitude: -6.2,
       longitude: 106.8,
       hourly: "temperature_2m",
-      timezone: "auto",
     },
   });
 
@@ -62,15 +61,7 @@ export async function fetchCurrentWeather(): Promise<CurrentWeather> {
     params: {
       latitude: -6.2,
       longitude: 106.8,
-      current: [
-        "temperature_2m",
-        "apparent_temperature",
-        "weathercode",
-        "relativehumidity_2m",
-        "windspeed_10m",
-      ].join(","),
-      hourly: "precipitation_probability",
-      timezone: "auto",
+      current: ["temperature_2m"],
     },
   });
 
@@ -91,43 +82,6 @@ export async function fetchCurrentWeather(): Promise<CurrentWeather> {
     precipitationChance:
       currentIndex >= 0 ? precipitation[currentIndex] : precipitation[0],
   };
-}
-
-/**
- * Fetch daily forecast data for Jakarta (-6.2, 106.8).
- */
-export async function fetchDailyWeather(): Promise<DailyWeather[]> {
-  const { data } = await axios.get(API_URL, {
-    params: {
-      latitude: -6.2,
-      longitude: 106.8,
-      daily: [
-        "weathercode",
-        "temperature_2m_max",
-        "temperature_2m_min",
-        "precipitation_probability_max",
-        "windspeed_10m_max",
-      ].join(","),
-      timezone: "auto",
-    },
-  });
-
-  const times: string[] = data?.daily?.time ?? [];
-  const maxTemps: number[] = data?.daily?.temperature_2m_max ?? [];
-  const minTemps: number[] = data?.daily?.temperature_2m_min ?? [];
-  const codes: number[] = data?.daily?.weathercode ?? [];
-  const precipitation: number[] =
-    data?.daily?.precipitation_probability_max ?? [];
-  const wind: number[] = data?.daily?.windspeed_10m_max ?? [];
-
-  return times.map((date, index) => ({
-    date,
-    maxTemp: maxTemps[index],
-    minTemp: minTemps[index],
-    weatherCode: codes[index],
-    precipitationChance: precipitation[index],
-    windSpeed: wind[index],
-  }));
 }
 
 export interface WeatherDescriptor {
