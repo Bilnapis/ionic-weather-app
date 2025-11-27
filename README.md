@@ -17,23 +17,15 @@ Single-screen Ionic Vue app that pulls live Jakarta weather data from the Open-M
 
 ```bash
 npm i -g @ionic/cli
-ionic serve
 ```
 
 ## Run the app
 
 ```bash
-npm run dev
+ionic serve
 ```
 
-Then open the printed local URL (typically `http://localhost:5173`).
-
-## Build for production
-
-```bash
-npm run build
-npm run preview  # optional, serve the production build locally
-```
+Then open the printed local URL (typically `http://localhost:8100`).
 
 ## API
 
