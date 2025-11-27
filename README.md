@@ -7,7 +7,7 @@ Single-screen Ionic Vue app that pulls live Jakarta weather data from the Open-M
 - Current Jakarta conditions with dynamic icon, timestamp, and temperature card.
 - Hourly temperature list in local time with loading and error states.
 - One-tap refresh that re-fetches both current and hourly data.
-- Built with Ionic Vue 8, Vite, and TypeScript; Axios for HTTP.
+- Built with Ionic Vue 8, and TypeScript; Axios for HTTP.
 
 ## Prerequisites
 
@@ -17,6 +17,7 @@ Single-screen Ionic Vue app that pulls live Jakarta weather data from the Open-M
 
 ```bash
 npm i -g @ionic/cli
+npm install
 ```
 
 ## Run the app
